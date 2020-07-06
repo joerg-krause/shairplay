@@ -231,14 +231,14 @@ dnssd_register_raop(dnssd_t *dnssd, const char *name, unsigned short port, const
 	assert(hwaddr);
 
 	dnssd->TXTRecordCreate(&txtRecord, 0, NULL);
-	dnssd->TXTRecordSetValue(&txtRecord, "txtvers", strlen(RAOP_TXTVERS), RAOP_TXTVERS);
-	dnssd->TXTRecordSetValue(&txtRecord, "ch", strlen(RAOP_CH), RAOP_CH);
+	// dnssd->TXTRecordSetValue(&txtRecord, "txtvers", strlen(RAOP_TXTVERS), RAOP_TXTVERS);
+	// dnssd->TXTRecordSetValue(&txtRecord, "ch", strlen(RAOP_CH), RAOP_CH);
 	dnssd->TXTRecordSetValue(&txtRecord, "cn", strlen(RAOP_CN), RAOP_CN);
 	dnssd->TXTRecordSetValue(&txtRecord, "et", strlen(RAOP_ET), RAOP_ET);
-	dnssd->TXTRecordSetValue(&txtRecord, "sv", strlen(RAOP_SV), RAOP_SV);
+	// dnssd->TXTRecordSetValue(&txtRecord, "sv", strlen(RAOP_SV), RAOP_SV);
 	dnssd->TXTRecordSetValue(&txtRecord, "da", strlen(RAOP_DA), RAOP_DA);
-	dnssd->TXTRecordSetValue(&txtRecord, "sr", strlen(RAOP_SR), RAOP_SR);
-	dnssd->TXTRecordSetValue(&txtRecord, "ss", strlen(RAOP_SS), RAOP_SS);
+	// dnssd->TXTRecordSetValue(&txtRecord, "sr", strlen(RAOP_SR), RAOP_SR);
+	// dnssd->TXTRecordSetValue(&txtRecord, "ss", strlen(RAOP_SS), RAOP_SS);
 	if (password) {
 		dnssd->TXTRecordSetValue(&txtRecord, "pw", strlen("true"), "true");
 	} else {
@@ -248,8 +248,13 @@ dnssd_register_raop(dnssd_t *dnssd, const char *name, unsigned short port, const
 	dnssd->TXTRecordSetValue(&txtRecord, "tp", strlen(RAOP_TP), RAOP_TP);
 	dnssd->TXTRecordSetValue(&txtRecord, "md", strlen(RAOP_MD), RAOP_MD);
 	dnssd->TXTRecordSetValue(&txtRecord, "vs", strlen(GLOBAL_VERSION), GLOBAL_VERSION);
-	dnssd->TXTRecordSetValue(&txtRecord, "sm", strlen(RAOP_SM), RAOP_SM);
-	dnssd->TXTRecordSetValue(&txtRecord, "ek", strlen(RAOP_EK), RAOP_EK);
+	dnssd->TXTRecordSetValue(&txtRecord, "am", strlen(GLOBAL_MODEL), GLOBAL_MODEL);
+	// dnssd->TXTRecordSetValue(&txtRecord, "ft", strlen("0x4A5D5A00,0x300"), "0x4A5D5A00,0x300");
+	// dnssd->TXTRecordSetValue(&txtRecord, "vv", strlen("2"), "2");
+	// dnssd->TXTRecordSetValue(&txtRecord, "ov", strlen("12.3"), "12.3");
+	// dnssd->TXTRecordSetValue(&txtRecord, "sm", strlen(RAOP_SM), RAOP_SM);
+	// dnssd->TXTRecordSetValue(&txtRecord, "ek", strlen(RAOP_EK), RAOP_EK);
+	// dnssd->TXTRecordSetValue(&txtRecord, "fv", strlen("76400.10"), "76400.10");
 
 	/* Convert hardware address to string */
 	ret = utils_hwaddr_raop(servname, sizeof(servname), hwaddr, hwaddrlen);

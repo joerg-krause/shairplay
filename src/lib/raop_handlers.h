@@ -114,7 +114,13 @@ raop_handler_fpsetup(raop_conn_t *conn,
 	int datalen;
 
 	data = (unsigned char *) http_request_get_data(request, &datalen);
+	logger_log(conn->raop->logger, LOGGER_DEBUG, "fp-setup data length %d", datalen);
 	if (datalen == 16) {
+		logger_log(conn->raop->logger, LOGGER_DEBUG, "fp-setup data: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x ",
+			data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7],
+			data[8], data[9], data[10], data[11], data[12], data[13], data[14], data[15]);
+		logger_log(conn->raop->logger, LOGGER_DEBUG, "fp-setup mode: %d", data[14]);
+
 		*response_data = malloc(142);
 		if (*response_data) {
 			if (!fairplay_setup(conn->fairplay, data, (unsigned char *) *response_data)) {
